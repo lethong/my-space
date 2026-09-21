@@ -4,15 +4,18 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   integrations: [
     starlight({
-      title: 'Tài liệu của tôi',
+      title: 'Tài liệu của Thông',
+      social: {
+        github: 'https://github.com/lethong',
+      },
       sidebar: [
         {
-          label: 'Lập trình',
-          autogenerate: { directory: 'lap-trinh' },
+          label: 'C# Nâng cao',
+          autogenerate: { directory: 'csharp-nang-cao' },
         },
         {
-          label: 'Thiết kế',
-          autogenerate: { directory: 'thiet-ke' },
+          label: 'Cơ sở dữ liệu SQL Server',
+          autogenerate: { directory: 'sql-server' },
         },
       ],
     }),
