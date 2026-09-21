@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Starlight Starter Kit: Basics
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
@@ -47,3 +48,6 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+=======
+# my-space
+>>>>>>> 9c5baf1e0f2c8ce912fbe5b6c62bdfe9e31b05e8
