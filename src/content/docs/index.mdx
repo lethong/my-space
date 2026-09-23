@@ -17,18 +17,25 @@ hero:
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
 ## Các chủ đề chính
-
 <CardGrid stagger>
-  <Card title="C# Nâng cao" icon="pencil">
-    Các bài viết về thiết kế API, Windows Forms và lập trình ứng dụng nền tảng .NET.
-  </Card>
-  <Card title="SQL Server" icon="add-document">
-    Kỹ thuật tối ưu hóa Index, Stored Procedures và quản trị cơ sở dữ liệu.
-  </Card>
-  <Card title="Hạ tầng IT" icon="setting">
-    Tài liệu thiết lập hệ thống, mạng lưới và cấu hình máy chủ.
-  </Card>
-  <Card title="Đọc tài liệu" icon="open-book">
-    Mở thanh điều hướng bên trái để duyệt toàn bộ danh sách bài viết chi tiết.
-  </Card>
+  <LinkCard 
+    title="C# Nâng cao" 
+    description="Các bài viết về thiết kế API, Windows Forms và lập trình ứng dụng nền tảng .NET."
+    href="./csharp-nang-cao/api-thong-bao/"
+  />
+  <LinkCard 
+    title="SQL Server" 
+    description="Kỹ thuật tối ưu hóa Index, Stored Procedures và quản trị cơ sở dữ liệu."
+    href="./sql-server/toi-uu-index/"
+  />
+  <LinkCard 
+    title="Hạ tầng IT" 
+    description="Tài liệu thiết lập hệ thống, mạng lưới và cấu hình máy chủ."
+    href="./ha-tang-it/cau-hinh-unifi/" 
+  />
+  <LinkCard 
+    title="Đọc tài liệu" 
+    description="Mở thanh điều hướng bên trái để duyệt toàn bộ danh sách bài viết chi tiết."
+    href="./csharp-nang-cao/api-thong-bao/"
+  />
 </CardGrid>
