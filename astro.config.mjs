@@ -2,23 +2,20 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
-  site: 'https://lethong.github.io',
-  base: '/my-space',
+  site: 'https://lethong.github.io', 
+  base: '/my-space', 
   integrations: [
     starlight({
       title: 'Tài liệu của Thông',
-      social: {
-        github: 'https://github.com/lethong',
-      },
       sidebar: [
         {
           label: 'C# Nâng cao',
-          autogenerate: { directory: 'csharp-nang-cao' },
+          items: [{ autogenerate: { directory: 'csharp-nang-cao' } }]
         },
         {
           label: 'Cơ sở dữ liệu SQL Server',
-          autogenerate: { directory: 'sql-server' },
-        },
+          items: [{ autogenerate: { directory: 'sql-server' } }]
+        }
       ],
     }),
   ],
