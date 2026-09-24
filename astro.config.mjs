@@ -2,8 +2,8 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
-  site: 'https://lethong.github.io', 
-  base: '/my-space', 
+  site: 'https://myspace.lebathong.com', 
+  base: '', 
   integrations: [
     starlight({
       title: 'Tài liệu của Thông',
