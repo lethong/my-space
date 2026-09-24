@@ -3,7 +3,6 @@ import starlight from '@astrojs/starlight';
 
 export default defineConfig({
   site: 'https://myspace.lebathong.com', 
-  base: '', 
   integrations: [
     starlight({
       title: 'Tài liệu của Thông',
