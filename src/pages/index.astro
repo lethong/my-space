@@ -1,0 +1,82 @@
+---
+// Nhập Component cốt lõi của Starlight để giữ giao diện tổng thể
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+
+// Nhập nội dung từ file Markdown của bạn (biến nó thành một component)
+import { Content as NoiDungMarkdown } from '../components/NoiDungTrangChu.md';
+---
+
+<!-- Cấu hình frontmatter cho trang Starlight -->
+<!-- 'template: splash' giúp trang mở rộng toàn màn hình, không có sidebar -->
+<StarlightPage frontmatter={{ title: 'Trang chủ thiết kế riêng', template: 'splash' }}>
+  
+  <!-- === TỪ ĐÂY TRỞ XUỐNG LÀ KHU VỰC BẠN TỰ DO THIẾT KẾ BỐ CỤC === -->
+  <main class="bo-cuc-trang-chu">
+    
+    <!-- 1. Phần Hero (Giới thiệu nổi bật) -->
+    <header class="phan-hero">
+      <h1>Chào mừng đến với Website của tôi!</h1>
+      <p>Bố cục này được thiết kế bằng HTML/CSS tùy chỉnh 100%.</p>
+      <button>Khám phá ngay</button>
+    </header>
+
+    <!-- 2. Phần nội dung Markdown -->
+    <section class="phan-noi-dung-markdown">
+      <div class="the-the-chua">
+        <!-- Đặt file Markdown của bạn vào đúng vị trí mong muốn -->
+        <NoiDungMarkdown />
+      </div>
+    </section>
+
+  </main>
+
+  <!-- === CSS DÀNH RIÊNG CHO TRANG NÀY === -->
+  <style>
+    .bo-cuc-trang-chu {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Trang trí phần Hero */
+    .phan-hero {
+      background: linear-gradient(135deg, #6366f1, #d946ef);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+      border-radius: 16px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .phan-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .phan-hero button {
+      margin-top: 1.5rem;
+      padding: 0.75rem 2rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #6366f1;
+      background-color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .phan-hero button:hover {
+      transform: scale(1.05);
+    }
+
+    /* Trang trí khu vực chứa Markdown */
+    .phan-noi-dung-markdown {
+      background-color: var(--sl-color-bg-nav); /* Dùng biến màu có sẵn của Starlight */
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--sl-color-hairline);
+    }
+  </style>
+</StarlightPage>
