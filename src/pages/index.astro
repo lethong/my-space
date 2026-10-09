@@ -1,82 +1,143 @@
 ---
-// Nhập Component cốt lõi của Starlight để giữ giao diện tổng thể
+// Nhập component của Starlight
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 
-// Nhập nội dung từ file Markdown của bạn (biến nó thành một component)
-import { Content as NoiDungMarkdown } from '../components/NoiDungTrangChu.md';
+// Nhập hàm getCollection từ API của Astro để lấy nội dung Markdown
+import { getCollection } from 'astro:content';
+
+// Lấy TẤT CẢ các bài viết trong thư mục 'src/content/docs'
+const allDocs = await getCollection('docs');
+
+// Lọc ra các bài viết thuộc chủ đề "C# Nâng Cao" (dựa vào tên folder gốc)
+const csharpPosts = allDocs.filter(doc => doc.id.startsWith('csharp-nang-cao/'));
+
+// Lọc ra các bài viết thuộc chủ đề "SQL Server"
+const sqlPosts = allDocs.filter(doc => doc.id.startsWith('sql-server/'));
 ---
 
-<!-- Cấu hình frontmatter cho trang Starlight -->
-<!-- 'template: splash' giúp trang mở rộng toàn màn hình, không có sidebar -->
-<StarlightPage frontmatter={{ title: 'Trang chủ thiết kế riêng', template: 'splash' }}>
+<StarlightPage frontmatter={{ title: 'Trang Chủ', template: 'splash' }}>
   
-  <!-- === TỪ ĐÂY TRỞ XUỐNG LÀ KHU VỰC BẠN TỰ DO THIẾT KẾ BỐ CỤC === -->
-  <main class="bo-cuc-trang-chu">
+  <main class="container">
     
-    <!-- 1. Phần Hero (Giới thiệu nổi bật) -->
-    <header class="phan-hero">
-      <h1>Chào mừng đến với Website của tôi!</h1>
-      <p>Bố cục này được thiết kế bằng HTML/CSS tùy chỉnh 100%.</p>
-      <button>Khám phá ngay</button>
-    </header>
+    <!-- === KHU VỰC 1: C# NÂNG CAO === -->
+    <section class="category-section">
+      <h2 class="section-title">C# Nâng Cao</h2>
+      <div class="posts-grid">
+        
+        {/* Lặp qua danh sách bài viết C# để tạo thẻ HTML động */}
+        {csharpPosts.map(post => (
+          <article class="post-card">
+            {/* Tạm thời dùng ảnh giả, nếu Markdown có thêm trường cover image thì gọi post.data.cover */}
+            <img src="https://via.placeholder.com/400x200" alt={post.data.title} class="post-img" />
+            <div class="post-content">
+              {/* Lấy title từ file Markdown */}
+              <h3 class="post-title">{post.data.title}</h3>
+              {/* Lấy description từ file Markdown */}
+              <p class="post-desc">{post.data.description}</p>
+              {/* post.slug tự động tạo đường dẫn chuẩn xác đến bài viết */}
+              <a href={`/${post.slug}/`} class="read-more-btn">Đọc bài viết</a>
+            </div>
+          </article>
+        ))}
 
-    <!-- 2. Phần nội dung Markdown -->
-    <section class="phan-noi-dung-markdown">
-      <div class="the-the-chua">
-        <!-- Đặt file Markdown của bạn vào đúng vị trí mong muốn -->
-        <NoiDungMarkdown />
+      </div>
+    </section>
+
+    <!-- === KHU VỰC 2: SQL SERVER === -->
+    <section class="category-section">
+      <h2 class="section-title">SQL Server</h2>
+      <div class="posts-grid">
+        
+        {sqlPosts.map(post => (
+          <article class="post-card">
+            <img src="https://via.placeholder.com/400x200" alt={post.data.title} class="post-img" />
+            <div class="post-content">
+              <h3 class="post-title">{post.data.title}</h3>
+              <p class="post-desc">{post.data.description}</p>
+              <a href={`/${post.slug}/`} class="read-more-btn">Đọc bài viết</a>
+            </div>
+          </article>
+        ))}
+
       </div>
     </section>
 
   </main>
 
-  <!-- === CSS DÀNH RIÊNG CHO TRANG NÀY === -->
   <style>
-    .bo-cuc-trang-chu {
+    /* Dán toàn bộ đoạn CSS từ câu trả lời trước của tôi vào đây, bắt đầu từ class .container, .category-section, .posts-grid, .post-card... */
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .section-title {
+      font-size: 28px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #007bff;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    .category-section {
+      margin-bottom: 50px;
+    }
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .post-card {
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      border: 1px solid #e5e5e5;
     }
-
-    /* Trang trí phần Hero */
-    .phan-hero {
-      background: linear-gradient(135deg, #6366f1, #d946ef);
-      color: white;
-      padding: 4rem 2rem;
+    .post-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    .post-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .post-content {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .post-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .post-desc {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .read-more-btn {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
       text-align: center;
-      border-radius: 16px;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s;
+      margin-top: auto;
     }
-
-    .phan-hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+    .read-more-btn:hover {
+      background-color: #0056b3;
       color: white;
-    }
-
-    .phan-hero button {
-      margin-top: 1.5rem;
-      padding: 0.75rem 2rem;
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #6366f1;
-      background-color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .phan-hero button:hover {
-      transform: scale(1.05);
-    }
-
-    /* Trang trí khu vực chứa Markdown */
-    .phan-noi-dung-markdown {
-      background-color: var(--sl-color-bg-nav); /* Dùng biến màu có sẵn của Starlight */
-      padding: 2rem;
-      border-radius: 12px;
-      border: 1px solid var(--sl-color-hairline);
     }
   </style>
+
 </StarlightPage>
