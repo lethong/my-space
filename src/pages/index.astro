@@ -28,7 +28,7 @@ const sqlPosts = allDocs.filter(doc => doc.id.startsWith('sql-server/'));
         {csharpPosts.map(post => (
           <article class="post-card">
             {/* Tạm thời dùng ảnh giả, nếu Markdown có thêm trường cover image thì gọi post.data.cover */}
-            <img src={post.data.thumbnail || "https://via.placeholder.com/400x200"}  alt={post.data.title} class="post-img" />
+            <img src={post.data.thumbnail || post.data.cover} alt={post.data.title} class="post-img"/>
             <div class="post-content">
               {/* Lấy title từ file Markdown */}
               <h3 class="post-title">{post.data.title}</h3>
@@ -50,7 +50,7 @@ const sqlPosts = allDocs.filter(doc => doc.id.startsWith('sql-server/'));
         
         {sqlPosts.map(post => (
           <article class="post-card">
-            <img src={post.data.thumbnail || "https://via.placeholder.com/400x200"} alt={post.data.title} class="post-img" />
+            <img src={post.data.thumbnail || "https://via.placeholder.com/400x200"} alt={post.data.title} class="post-img"/>
             <div class="post-content">
               <h3 class="post-title">{post.data.title}</h3>
               <p class="post-desc">{post.data.description}</p>
