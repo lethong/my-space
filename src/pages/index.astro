@@ -28,14 +28,14 @@ const sqlPosts = allDocs.filter(doc => doc.id.startsWith('sql-server/'));
         {csharpPosts.map(post => (
           <article class="post-card">
             {/* Tạm thời dùng ảnh giả, nếu Markdown có thêm trường cover image thì gọi post.data.cover */}
-            <img src="https://via.placeholder.com/400x200" alt={post.data.title} class="post-img" />
+            <img src={post.data.thumbnail || "https://via.placeholder.com/400x200"}  alt={post.data.title} class="post-img" />
             <div class="post-content">
               {/* Lấy title từ file Markdown */}
               <h3 class="post-title">{post.data.title}</h3>
               {/* Lấy description từ file Markdown */}
               <p class="post-desc">{post.data.description}</p>
               {/* post.slug tự động tạo đường dẫn chuẩn xác đến bài viết */}
-              <a href={`/${post.slug}/`} class="read-more-btn">Đọc bài viết</a>
+              <a href={`/${post.slug || post.id}/`} class="read-more-btn">Đọc bài viết</a>
             </div>
           </article>
         ))}
@@ -50,11 +50,11 @@ const sqlPosts = allDocs.filter(doc => doc.id.startsWith('sql-server/'));
         
         {sqlPosts.map(post => (
           <article class="post-card">
-            <img src="https://via.placeholder.com/400x200" alt={post.data.title} class="post-img" />
+            <img src={post.data.thumbnail || "https://via.placeholder.com/400x200"} alt={post.data.title} class="post-img" />
             <div class="post-content">
               <h3 class="post-title">{post.data.title}</h3>
               <p class="post-desc">{post.data.description}</p>
-              <a href={`/${post.slug}/`} class="read-more-btn">Đọc bài viết</a>
+              <a href={`/${post.slug || post.id}/`} class="read-more-btn">Đọc bài viết</a>
             </div>
           </article>
         ))}
