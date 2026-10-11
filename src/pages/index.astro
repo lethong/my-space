@@ -77,6 +77,40 @@ const sqlPosts = allDocs.filter(doc => doc.id.startsWith('sql-server/'));
 
   <style>
     /* Dán toàn bộ đoạn CSS từ câu trả lời trước của tôi vào đây, bắt đầu từ class .container, .category-section, .posts-grid, .post-card... */
+    /* CSS cho Menu điều hướng */
+    .custom-header {
+      background-color: transparent;
+      padding-top: 20px;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--sl-color-hairline);
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: center; /* Căn giữa menu */
+      align-items: center;
+      padding-bottom: 20px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 40px; /* Khoảng cách giữa các menu */
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: var(--sl-color-white); /* Dùng màu chữ của Starlight để đồng bộ Dark/Light mode */
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #007bff; /* Màu xanh khi hover */
+    }
     
     .container {
       max-width: 1200px;
