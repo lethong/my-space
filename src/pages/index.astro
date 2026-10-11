@@ -16,7 +16,18 @@ const sqlPosts = allDocs.filter(doc => doc.id.startsWith('sql-server/'));
 ---
 
 <StarlightPage frontmatter={{ title: 'Trang Chủ', template: 'splash' }}>
-  
+  <!-- === THANH MENU ĐIỀU HƯỚNG TÙY CHỈNH === -->
+  <header class="custom-header">
+    <div class="container">
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="/">Trang chủ</a></li>
+          <li><a href="/bai-viet">Bài viết</a></li>
+          <li><a href="/contact">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
   <main class="container">
     
     <!-- === KHU VỰC 1: C# NÂNG CAO === -->
