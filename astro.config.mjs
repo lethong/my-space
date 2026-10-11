@@ -6,6 +6,9 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Tài liệu của Thông',
+      components: {
+        Header: './src/components/CustomHeader.astro',
+      },
       sidebar: [
         {
           label: 'C# Nâng cao',

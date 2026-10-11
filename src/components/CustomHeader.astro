@@ -1,0 +1,54 @@
+---
+// Import Header mặc định của Starlight để không làm mất Logo, thanh Search và Dark/Light mode
+import Default from '@astrojs/starlight/components/Header.astro';
+import type { Props } from '@astrojs/starlight/props';
+---
+
+<div class="custom-header-wrapper">
+  <!-- 1. Gọi Header mặc định của Starlight -->
+  <Default {...Astro.props} />
+
+  <!-- 2. Thêm thanh menu của bạn ngay bên dưới -->
+  <nav class="custom-nav">
+    <div class="nav-links">
+      <a href="/">Trang chủ</a>
+      <a href="/bai-viet">Bài viết</a>
+      <a href="/contact">Liên hệ</a>
+    </div>
+  </nav>
+</div>
+
+<style>
+  .custom-header-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .custom-nav {
+    background-color: var(--sl-color-bg-nav);
+    border-top: 1px solid var(--sl-color-hairline);
+    padding: 10px 0;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .nav-links a {
+    color: var(--sl-color-text);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: var(--sl-color-text-accent); /* Dùng màu xanh accent mặc định của Starlight */
+  }
+</style>
