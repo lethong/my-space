@@ -15,6 +15,18 @@ export default defineConfig({
       },
       sidebar: [
         {
+          label: 'Trang chủ',
+          link: '/',
+        },
+        {
+          label: 'Bài viết',
+          link: '/bai-viet/',
+        },
+        {
+          label: 'Liên hệ',
+          link: '/contact/',
+        },
+        {
           label: 'C# Nâng cao',
           items: [{ autogenerate: { directory: 'csharp-nang-cao' } }]
         },
