@@ -7,7 +7,11 @@ export default defineConfig({
     starlight({
       title: 'Tài liệu của Thông',
       components: {
-        Header: './src/components/CustomHeader.astro',
+        // Xóa (hoặc comment) dòng Header cũ đi:
+        // Header: './src/components/CustomHeader.astro',
+        
+        // Thêm dòng mới này để ghi đè SiteTitle:
+        SiteTitle: './src/components/CustomSiteTitle.astro',
       },
       sidebar: [
         {

@@ -1,0 +1,51 @@
+---
+// src/components/CustomSiteTitle.astro
+import type { Props } from '@astrojs/starlight/props';
+// Import thành phần SiteTitle (Logo) mặc định của Starlight
+import Default from '@astrojs/starlight/components/SiteTitle.astro';
+---
+
+<div class="site-title-wrapper">
+  <!-- 1. Hiển thị Logo và Tiêu đề mặc định của Starlight -->
+  <Default {...Astro.props} />
+
+  <!-- 2. Thanh menu của bạn sẽ nằm ngay bên cạnh Logo -->
+  <nav class="header-menu">
+    <a href="/">Trang chủ</a>
+    <a href="/bai-viet">Bài viết</a>
+    <a href="/contact">Liên hệ</a>
+  </nav>
+</div>
+
+<style>
+  /* Căn chỉnh Logo và Menu nằm trên cùng 1 hàng ngang */
+  .site-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 3rem; /* Khoảng cách giữa Logo và Menu */
+  }
+
+  .header-menu {
+    display: flex;
+    gap: 1.5rem; /* Khoảng cách giữa các nút trong Menu */
+  }
+
+  .header-menu a {
+    color: var(--sl-color-text);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  .header-menu a:hover {
+    color: var(--sl-color-text-accent); /* Đổi màu khi di chuột qua */
+  }
+
+  /* Ẩn menu này trên màn hình điện thoại để không làm vỡ giao diện mặc định của Starlight */
+  @media (max-width: 50rem) {
+    .header-menu {
+      display: none;
+    }
+  }
+</style>
