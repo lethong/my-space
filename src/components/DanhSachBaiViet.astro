@@ -1,0 +1,55 @@
+---
+// src/components/DanhSachBaiViet.astro
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('docs');
+
+// Lọc bỏ những trang không phải là bài viết (ví dụ trang chủ index, hoặc chính trang bai-viet)
+// Chỉ lấy những bài nằm trong các thư mục con (có dấu / trong id)
+const posts = allPosts.filter(post => post.id.includes('/'));
+---
+
+<div class="posts-list">
+  {posts.map(post => (
+    <a href={`/${post.id}/`} class="post-item">
+      <h3>{post.data.title}</h3>
+      <p>{post.data.description}</p>
+    </a>
+  ))}
+</div>
+
+<style>
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .post-item {
+    padding: 1.5rem;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.5rem;
+    text-decoration: none !important;
+    background-color: var(--sl-color-bg-nav);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .post-item:hover {
+    border-color: var(--sl-color-text-accent);
+    transform: translateX(5px);
+  }
+  
+  .post-item h3 {
+    margin: 0 0 0.5rem 0 !important;
+    color: var(--sl-color-white);
+    font-size: 1.25rem;
+  }
+  
+  .post-item p {
+    margin: 0 !important;
+    color: var(--sl-color-gray-3);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+</style>
